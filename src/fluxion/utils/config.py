@@ -4,7 +4,7 @@ import os
 from typing import Optional, List
 from enum import Enum
 from ._log import FluxionLogger
-
+import yaml
 
 @dataclass
 class AvailableAttentionBackends(Enum):
@@ -322,4 +322,14 @@ def to_json_dict(obj):
     if isinstance(obj, list):
         return [to_json_dict(item) for item in obj]  # Convert lists
     return obj
+
+def json_to_yaml(json_dict:dict,yaml_path:str):
+    with open(yaml_path,"w") as f:
+        yaml.dump(json_dict,f)
+        
+def yaml_to_json(yaml_path:str):
+    with open(yaml_path,"r") as f:
+        return yaml.load(f)
+    
+def yaml_to_dict(yaml_path:str):
         

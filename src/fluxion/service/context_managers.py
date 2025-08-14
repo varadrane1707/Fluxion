@@ -1,6 +1,29 @@
 import os
+from typing import Any
 from ..utils.constants import LORA_LRU_CACHE_MAX_SIZE,CONTROLNET_LRU_CACHE_MAX_SIZE,CACHE_DIR
 from .lru_cache import LRUCache
+
+class BaseContextManager:
+    def __init__(self):
+        self.context = None
+        
+    def get_context(self):
+        return self.context
+    
+    def register_context(self,context:Any):
+        self.context = context
+
+
+class ModelManager(BaseContextManager):
+    def __init__(self):
+        self.model_dir = os.getenv("MODEL_DIR","/models/")
+        self.model_dict = {}
+        
+    def get_model_dict(self):
+        return self.model_dict
+
+class PipelineManager():
+    def __init__
 
 
 class LoraManager():
