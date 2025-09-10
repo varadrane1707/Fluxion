@@ -1,4 +1,5 @@
 {
+    "model_name": "Flux",
     "model_source_type": "huggingface",
     "model_source_path": "Black-Forest-Labs/Flux.1-Dev",
     "model_format": "safetensors",

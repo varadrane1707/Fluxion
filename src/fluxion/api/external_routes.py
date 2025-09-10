@@ -1,7 +1,7 @@
 # this file is for the external routes that are used by the client to interact with the server  
 
 from fastapi import APIRouter
-from ..service.context_managers import LoraManager , ModelManager
+from ..utils.context_managers import ModelManager
 
 router = APIRouter()
 

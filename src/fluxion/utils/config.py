@@ -52,6 +52,8 @@ class PipelineConfig:
             use_controlnet=use_controlnet,
             use_multicontrolnet=use_multicontrolnet
         )
+        
+class Model``
     
 @dataclass
 class AvailableCaching(Enum):
@@ -161,7 +163,7 @@ class AvailableDtype(Enum):
             raise ValueError(f"Invalid dtype: {dtype}")
         
 @dataclass
-class OptimisationConfig():
+class ServerConfig():
     """
     Example config : 
     
@@ -198,7 +200,7 @@ class OptimisationConfig():
     def __repr__(self):
         """Custom repr to show enum values instead of enum objects"""
         return (
-            f"OptimisationConfig(\n"
+            f"ServerConfig(\n"
             f"  model_source_type='{self.model_source_type.value}',\n"
             f"  model_source_path='{self.model_source_path}',\n"
             f"  model_format='{self.model_format.value}',\n"
@@ -291,20 +293,10 @@ class OptimisationConfig():
             ),
         )
         
-    @classmethod
-    def post_init(cls, config: dict):
-        if config["model_source_type"] == AvailableModelSourceType.HuggingFace:
-            if config["model_source_path"] is None:
-                config["model_source_path"] = "black-forest-labs/FLUX.1-dev"
-        elif config["model_source_type"] == AvailableModelSourceType.Local:
-            if config["model_source_path"] is None:
-                FluxionLogger("Model source path is required for Local model source type", "error")
-                return
-        #if any missing fields in from_dict, set them to None
         
         
 def generate_default_server_configs():
-    config = OptimisationConfig()
+    config = ServerConfig()
     return to_json_dict(config)
         
 def to_json_dict(obj):
@@ -323,13 +315,4 @@ def to_json_dict(obj):
         return [to_json_dict(item) for item in obj]  # Convert lists
     return obj
 
-def json_to_yaml(json_dict:dict,yaml_path:str):
-    with open(yaml_path,"w") as f:
-        yaml.dump(json_dict,f)
-        
-def yaml_to_json(yaml_path:str):
-    with open(yaml_path,"r") as f:
-        return yaml.load(f)
-    
-def yaml_to_dict(yaml_path:str):
         
