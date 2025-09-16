@@ -1,0 +1,17 @@
+{
+    "model_name": "Flux",
+    "model_source_type": "huggingface",
+    "model_source_path": "Black-Forest-Labs/Flux.1-Dev",
+    "model_format": "safetensors",
+    "pipeline_type": ["txt2img", "img2img", "inpainting"],
+    "pipeline_config": {
+        "use_controlnet": false,
+        "use_multicontrolnet": false
+    },
+    "device": "cuda",
+    "dtype": "bf16",
+    "attention_backend": "flash_attention",
+    "quantization": "FP8",
+    "use_caching": "None",
+    "compile": "None"
+}

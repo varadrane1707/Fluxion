@@ -1,0 +1,30 @@
+
+
+import os
+
+MODEL_DIR = os.getenv("MODEL_DIR","/models/")
+
+LORA_LRU_CACHE_MAX_SIZE = os.getenv("LORA_LRU_CACHE_MAX_SIZE",6)
+CONTROLNET_LRU_CACHE_MAX_SIZE = os.getenv("CONTROLNET_LRU_CACHE_MAX_SIZE",2)
+
+CACHE_DIR = os.getenv("CACHE_DIR","/cache/")
+
+LORA_CACHE_DIR_MAX_SIZE = os.getenv("LORA_CACHE_DIR_MAX_SIZE",100)
+CONTROLNET_CACHE_DIR_MAX_SIZE = os.getenv("CONTROLNET_CACHE_DIR_MAX_SIZE",10)
+
+AWS_S3_BUCKET_NAME = os.getenv("AWS_S3_BUCKET_NAME","fluxion-models")
+AWS_S3_ACCESS_KEY_ID = os.getenv("AWS_S3_ACCESS_KEY_ID","")
+AWS_S3_SECRET_ACCESS_KEY = os.getenv("AWS_S3_SECRET_ACCESS_KEY","")
+AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME","us-east-1")
+AWS_S3_ENDPOINT_URL = os.getenv("AWS_S3_ENDPOINT_URL","")
+
+OUTPUT_DIR = os.getenv("OUTPUT_DIR","/output/")
+
+
+
+
+
+
+
+
+
